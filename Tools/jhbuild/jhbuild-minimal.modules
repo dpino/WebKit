@@ -132,10 +132,10 @@
       <dep package="glib-networking"/>
       <dep package="libpsl"/>
     </dependencies>
-    <branch module="/sources/libsoup/3.4/libsoup-${version}.tar.xz"
-            version="3.4.4"
+    <branch module="/sources/libsoup/3.6/libsoup-${version}.tar.xz"
+            version="3.6.0"
             repo="download.gnome.org"
-            hash="sha256:291c67725f36ed90ea43efff25064b69c5a2d1981488477c05c481a3b4b0c5aa">
+            hash="sha256:62959f791e8e8442f8c13cedac8c4919d78f9120d5bb5301be67a5e53318b4a3">
     </branch>
   </meson>
 
