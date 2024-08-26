@@ -60,7 +60,6 @@ endif ()
 if (ENABLE_MEDIA_STREAM AND ENABLE_WEB_RTC)
     if (USE_GSTREAMER_WEBRTC)
         SET_AND_EXPOSE_TO_BUILD(USE_LIBWEBRTC FALSE)
-
         # OpenSSL is required for SFrame encryption support.
         find_package(OpenSSL)
         if (NOT OPENSSL_FOUND OR OPENSSL_VERSION VERSION_LESS "3.0.0")
