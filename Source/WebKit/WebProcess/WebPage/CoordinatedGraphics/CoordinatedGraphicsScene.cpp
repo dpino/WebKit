@@ -54,8 +54,8 @@ void CoordinatedGraphicsScene::paintToCurrentGLContext(const TransformationMatri
     bool didChangeClipRect = false;
     FloatRoundedRect actualClipRect(clipRect);
 #if ENABLE(DAMAGE_TRACKING)
+    Damage frameDamage;
     if (m_client && m_damagePropagation != Damage::Propagation::None) {
-        Damage frameDamage;
         if (sceneHasRunningAnimations) {
             // When running animations for now we need to damage the whole frame.
             frameDamage.add(clipRect);
@@ -102,6 +102,16 @@ void CoordinatedGraphicsScene::paintToCurrentGLContext(const TransformationMatri
         m_textureMapper->endClip();
         m_textureMapper->endPainting();
     }
+
+#if ENABLE(DAMAGE_TRACKING)
+    if (m_damageVisualizer.isActive()) {
+        m_textureMapper->beginPainting(flipY ? TextureMapper::FlipY::Yes : TextureMapper::FlipY::No);
+        m_textureMapper->beginClip(TransformationMatrix(), FloatRoundedRect(clipRect));
+        m_damageVisualizer.updateDamageAndDisplay(*m_textureMapper, frameDamage);
+        m_textureMapper->endClip();
+        m_textureMapper->endPainting();
+    }
+#endif
 
     if (sceneHasRunningAnimations)
         updateViewport();
