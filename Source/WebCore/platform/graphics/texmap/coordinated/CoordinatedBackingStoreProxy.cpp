@@ -157,8 +157,12 @@ OptionSet<CoordinatedBackingStoreProxy::UpdateResult> CoordinatedBackingStorePro
     // Update the dirty tiles.
     unsigned dirtyTilesCount = 0;
     for (const auto& tile : m_tiles.values()) {
-        if (tile.isDirty())
-            dirtyTilesCount++;
+        for (auto& dirtyRect : tile.dirtyRects) {
+            if (tile.isDirty()) {
+                dirtyTilesCount++;
+                break;
+            }
+        }
     }
 
     WTFBeginSignpost(this, UpdateTiles, "dirty tiles: %u", dirtyTilesCount);
@@ -166,20 +170,34 @@ OptionSet<CoordinatedBackingStoreProxy::UpdateResult> CoordinatedBackingStorePro
     Vector<Update::TileUpdate> tilesToUpdate;
     unsigned dirtyTileIndex = 0;
     for (auto& tile : m_tiles.values()) {
-        if (!tile.isDirty())
-            continue;
+        for (auto& dirtyRect : tile.dirtyRects) {
+            if (!tile.isDirty())
+                continue;
 
-        WTFBeginSignpost(this, UpdateTile, "%u/%u, id: %d, rect: %ix%i+%i+%i, dirty: %ix%i+%i+%i", ++dirtyTileIndex, dirtyTilesCount, tile.id,
-            tile.rect.x(), tile.rect.y(), tile.rect.width(), tile.rect.height(), tile.dirtyRect.x(), tile.dirtyRect.y(), tile.dirtyRect.width(), tile.dirtyRect.height());
+            WTFBeginSignpost(this, UpdateTile, "%u/%u, id: %d, rect: %ix%i+%i+%i, dirty: %ix%i+%i+%i", ++dirtyTileIndex, dirtyTilesCount, tile.id,
+                tile.rect.x(), tile.rect.y(), tile.rect.width(), tile.rect.height(), dirtyRect.x(), dirtyRect.y(), dirtyRect.width(), dirtyRect.height());
 
+<<<<<<< HEAD
         auto buffer = layer.paint(tile.dirtyRect);
         IntRect updateRect(tile.dirtyRect);
         updateRect.move(-tile.rect.x(), -tile.rect.y());
         tilesToUpdate.append({ tile.id, tile.rect, WTFMove(updateRect), WTFMove(buffer) });
-        tile.markClean();
-        result.add(UpdateResult::BuffersChanged);
+||||||| parent of 352492503824 (Allow multiple tile dirty regions. Need the bug URL (OOPS!).)
+        auto buffer = layer.paintTile(tile.dirtyRect);
+        IntRect updateRect(tile.dirtyRect);
+        updateRect.move(-tile.rect.x(), -tile.rect.y());
+        tilesToUpdate.append({ tile.id, tile.rect, WTFMove(updateRect), WTFMove(buffer) });
+=======
+            auto buffer = layer.paintTile(dirtyRect);
+            IntRect updateRect(dirtyRect);
+            updateRect.move(-tile.rect.x(), -tile.rect.y());
+            tilesToUpdate.append({ tile.id, tile.rect, WTFMove(updateRect), WTFMove(buffer) });
+            result.add(UpdateResult::BuffersChanged);
 
-        WTFEndSignpost(this, UpdateTile);
+            WTFEndSignpost(this, UpdateTile);
+        }
+>>>>>>> 352492503824 (Allow multiple tile dirty regions. Need the bug URL (OOPS!).)
+        tile.markClean();
     }
 
     WTFEndSignpost(this, UpdateTiles);
