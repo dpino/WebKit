@@ -61,23 +61,34 @@ void CoordinatedGraphicsScene::paintToCurrentGLContext(const TransformationMatri
             frameDamage.add(clipRect);
         } else {
             WTFBeginSignpost(this, CollectDamage);
+<<<<<<< HEAD
             currentRootLayer.collectDamage(*m_textureMapper, frameDamage);
+||||||| parent of 6f6d7c9c5918 (Enable testing of damaging information propagation https://bugs.webkit.org/show_bug.cgi?id=283425)
+            currentRootLayer->collectDamage(*m_textureMapper, frameDamage);
+=======
+            currentRootLayer->collectDamage(*m_textureMapper, frameDamage, clipRect.size());
+>>>>>>> 6f6d7c9c5918 (Enable testing of damaging information propagation https://bugs.webkit.org/show_bug.cgi?id=283425)
             WTFEndSignpost(this, CollectDamage);
 
-            ASSERT(!frameDamage.isInvalid());
-            if (m_damagePropagation == Damage::Propagation::Unified) {
+            if (!frameDamage.isInvalid() && m_damagePropagation == Damage::Propagation::Unified) {
                 Damage boundsDamage;
                 boundsDamage.add(frameDamage.bounds());
                 frameDamage = WTFMove(boundsDamage);
             }
         }
 
+<<<<<<< HEAD
         if (!matrix.isIdentity()) {
             // FIXME: Add support for viewport scale != 1.
             frameDamage.add(clipRect);
         }
 
         const auto& damageSinceLastSurfaceUse = m_client->addSurfaceDamage(!frameDamage.isInvalid() && !frameDamage.isEmpty() ? frameDamage : Damage::invalid());
+||||||| parent of 6f6d7c9c5918 (Enable testing of damaging information propagation https://bugs.webkit.org/show_bug.cgi?id=283425)
+        const auto& damageSinceLastSurfaceUse = m_client->addSurfaceDamage(frameDamage);
+=======
+        const auto& damageSinceLastSurfaceUse = m_client->addSurfaceDamage(!frameDamage.isInvalid() && !frameDamage.isEmpty() ? frameDamage : Damage::invalid());
+>>>>>>> 6f6d7c9c5918 (Enable testing of damaging information propagation https://bugs.webkit.org/show_bug.cgi?id=283425)
         if (!damageSinceLastSurfaceUse.isInvalid()) {
             actualClipRect = static_cast<FloatRoundedRect>(damageSinceLastSurfaceUse.bounds());
             didChangeClipRect = true;
