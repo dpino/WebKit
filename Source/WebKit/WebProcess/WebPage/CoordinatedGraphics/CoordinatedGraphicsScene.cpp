@@ -61,18 +61,23 @@ void CoordinatedGraphicsScene::paintToCurrentGLContext(const TransformationMatri
             frameDamage.add(clipRect);
         } else {
             WTFBeginSignpost(this, CollectDamage);
+<<<<<<< HEAD
             currentRootLayer.collectDamage(*m_textureMapper, frameDamage);
+||||||| parent of 70b25a896aba (Enable testing of damaging information propagation https://bugs.webkit.org/show_bug.cgi?id=283425)
+            currentRootLayer->collectDamage(*m_textureMapper, frameDamage);
+=======
+            currentRootLayer->collectDamage(*m_textureMapper, frameDamage, clipRect.size());
+>>>>>>> 70b25a896aba (Enable testing of damaging information propagation https://bugs.webkit.org/show_bug.cgi?id=283425)
             WTFEndSignpost(this, CollectDamage);
 
-            ASSERT(!frameDamage.isInvalid());
-            if (m_damagePropagation == Damage::Propagation::Unified) {
+            if (!frameDamage.isInvalid() && m_damagePropagation == Damage::Propagation::Unified) {
                 Damage boundsDamage;
                 boundsDamage.add(frameDamage.bounds());
                 frameDamage = WTFMove(boundsDamage);
             }
         }
 
-        const auto& damageSinceLastSurfaceUse = m_client->addSurfaceDamage(frameDamage);
+        const auto& damageSinceLastSurfaceUse = m_client->addSurfaceDamage(!frameDamage.isInvalid() && !frameDamage.isEmpty() ? frameDamage : Damage::invalid());
         if (!damageSinceLastSurfaceUse.isInvalid()) {
             actualClipRect = static_cast<FloatRoundedRect>(damageSinceLastSurfaceUse.bounds());
             didChangeClipRect = true;
