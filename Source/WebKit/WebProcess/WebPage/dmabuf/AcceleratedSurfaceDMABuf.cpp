@@ -630,6 +630,7 @@ void AcceleratedSurfaceDMABuf::willDestroyCompositingRunLoop()
 
 void AcceleratedSurfaceDMABuf::didCreateGLContext()
 {
+    AcceleratedSurface::didCreateGLContext();
     glGenFramebuffers(1, &m_fbo);
     glBindFramebuffer(GL_FRAMEBUFFER, m_fbo);
 }
@@ -642,6 +643,7 @@ void AcceleratedSurfaceDMABuf::willDestroyGLContext()
         glDeleteFramebuffers(1, &m_fbo);
         m_fbo = 0;
     }
+    AcceleratedSurface::willDestroyGLContext();
 }
 
 uint64_t AcceleratedSurfaceDMABuf::surfaceID() const
