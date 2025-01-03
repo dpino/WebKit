@@ -90,14 +90,10 @@ private:
     void enterAcceleratedCompositingMode(uint64_t backingStoreStateID, const LayerTreeContext&) override;
     void exitAcceleratedCompositingMode(uint64_t backingStoreStateID, UpdateInfo&&) override;
     void updateAcceleratedCompositingMode(uint64_t backingStoreStateID, const LayerTreeContext&) override;
-<<<<<<< HEAD
     void dispatchPresentationCallbacksAfterFlushingLayers(IPC::Connection&, Vector<IPC::AsyncReplyID>&&) override;
-||||||| parent of 819dd8e3f53c (chore(webkit): bootstrap build #2122)
-=======
 #if PLATFORM(WIN)
     void didChangeAcceleratedCompositingMode(bool enabled) override;
 #endif
->>>>>>> 819dd8e3f53c (chore(webkit): bootstrap build #2122)
 
     bool shouldSendWheelEventsToEventDispatcher() const override { return true; }
 
