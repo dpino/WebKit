@@ -796,7 +796,6 @@ RendererBufferFormat AcceleratedBackingStoreDMABuf::bufferFormat() const
     return buffer ? buffer->format() : RendererBufferFormat { };
 }
 
-<<<<<<< HEAD
 RefPtr<WebCore::NativeImage> AcceleratedBackingStoreDMABuf::bufferAsNativeImageForTesting() const
 {
     if (!m_committedBuffer)
@@ -812,8 +811,6 @@ RefPtr<WebCore::NativeImage> AcceleratedBackingStoreDMABuf::bufferAsNativeImageF
     return m_committedBuffer->asNativeImageForTesting();
 }
 
-||||||| parent of d24b38974b27 (chore(webkit): bootstrap build #2123)
-=======
 // Playwright begin
 cairo_surface_t* AcceleratedBackingStoreDMABuf::surface()
 {
@@ -840,5 +837,4 @@ cairo_surface_t* AcceleratedBackingStoreDMABuf::surface()
 }
 // Playwright end
 
->>>>>>> d24b38974b27 (chore(webkit): bootstrap build #2123)
 } // namespace WebKit
