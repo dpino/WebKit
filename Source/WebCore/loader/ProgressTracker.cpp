@@ -186,28 +186,12 @@ void ProgressTracker::finalProgressComplete()
     if (m_isMainLoad)
         m_mainLoadCompletionTime = MonotonicTime::now();
 
-<<<<<<< HEAD
     if (frame) {
         frame->protectedLoader()->protectedClient()->setMainFrameDocumentReady(true);
         m_client->progressFinished(*frame);
         protectedPage()->progressFinished(*frame);
         frame->protectedLoader()->loadProgressingStatusChanged();
-
-        InspectorInstrumentation::frameStoppedLoading(*frame);
     }
-||||||| parent of 91a3aadae6ab (chore(webkit): bootstrap build #2123)
-    frame->protectedLoader()->protectedClient()->setMainFrameDocumentReady(true);
-    m_client->progressFinished(*frame);
-    protectedPage()->progressFinished(*frame);
-    frame->protectedLoader()->loadProgressingStatusChanged();
-
-    InspectorInstrumentation::frameStoppedLoading(*frame);
-=======
-    frame->protectedLoader()->protectedClient()->setMainFrameDocumentReady(true);
-    m_client->progressFinished(*frame);
-    protectedPage()->progressFinished(*frame);
-    frame->protectedLoader()->loadProgressingStatusChanged();
->>>>>>> 91a3aadae6ab (chore(webkit): bootstrap build #2123)
 }
 
 void ProgressTracker::incrementProgress(ResourceLoaderIdentifier identifier, const ResourceResponse& response)
