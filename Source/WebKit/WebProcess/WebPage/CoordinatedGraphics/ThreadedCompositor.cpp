@@ -296,7 +296,9 @@ void ThreadedCompositor::renderLayerTree()
     // and similarly all GL operations are done inside that specific scope.
 
     if (needsResize)
-        m_surface->clientResize(viewportSize);
+        RunLoop::main().dispatch([this, protectedThis = Ref { *this }, viewportSize] {
+            m_surface->clientResize(viewportSize);
+        });
 
     m_surface->willRenderFrame();
     RunLoop::main().dispatch([this, protectedThis = Ref { *this }] {
