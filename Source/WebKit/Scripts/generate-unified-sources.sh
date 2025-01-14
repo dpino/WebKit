@@ -18,7 +18,13 @@ if [ $# -eq 0 ]; then
     echo "Using unified source list files: Sources.txt, SourcesCocoa.txt, Platform/Sources.txt, Platform/SourcesCocoa.txt"
 fi
 
+<<<<<<< HEAD
 UnifiedSourceCppFileCount=140
+||||||| parent of 6a565197a84f (chore(webkit): bootstrap build #2124)
+UnifiedSourceCppFileCount=137
+=======
+UnifiedSourceCppFileCount=139
+>>>>>>> 6a565197a84f (chore(webkit): bootstrap build #2124)
 UnifiedSourceCFileCount=0
 UnifiedSourceMmFileCount=80
 
