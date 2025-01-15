@@ -99,7 +99,6 @@ public:
     bool isSkippedContentForLayout(const RenderElement&) const;
     bool isSkippedContentRootForLayout(const RenderElement&) const;
 
-<<<<<<< HEAD
     bool isPercentHeightResolveDisabledFor(const RenderBox& flexItem);
 
     struct TextBoxTrim {
@@ -109,16 +108,9 @@ public:
     std::optional<TextBoxTrim> textBoxTrim() const { return m_textBoxTrim; }
     void setTextBoxTrim(std::optional<TextBoxTrim> textBoxTrim) { m_textBoxTrim = textBoxTrim; }
 
-    RenderElement* subtreeLayoutRoot() const;
-    void clearSubtreeLayoutRoot() { m_subtreeLayoutRoot.clear(); }
-||||||| parent of 31607e44e23f (Fallback to full-layout happens when more than 1 subtree layout is pending https://bugs.webkit.org/show_bug.cgi?id=275394)
-    RenderElement* subtreeLayoutRoot() const;
-    void clearSubtreeLayoutRoot() { m_subtreeLayoutRoot.clear(); }
-=======
     bool hasSubtreeLayoutRoot(const RenderElement&) const;
     void removeSubtreeLayoutRoot(const RenderElement&);
     void clearSubtreeLayoutRoots();
->>>>>>> 31607e44e23f (Fallback to full-layout happens when more than 1 subtree layout is pending https://bugs.webkit.org/show_bug.cgi?id=275394)
     void convertSubtreeLayoutToFullLayout();
 
     void reset();
@@ -224,17 +216,7 @@ private:
     SingleThreadWeakRef<LocalFrameView> m_frameView;
     Timer m_layoutTimer;
     Timer m_postLayoutTaskTimer;
-<<<<<<< HEAD
-    SingleThreadWeakPtr<RenderElement> m_subtreeLayoutRoot;
-||||||| parent of 31607e44e23f (Fallback to full-layout happens when more than 1 subtree layout is pending https://bugs.webkit.org/show_bug.cgi?id=275394)
-    SingleThreadWeakPtr<RenderElement> m_subtreeLayoutRoot;
-    // Note that arithmetic overflow is perfectly acceptable as long as we use this only for repaint optimization.
-    RenderElement::LayoutIdentifier m_layoutIdentifier : 12 { 0 };
-=======
     HashSet<RenderElement*> m_subtreeLayoutRoots;
-    // Note that arithmetic overflow is perfectly acceptable as long as we use this only for repaint optimization.
-    RenderElement::LayoutIdentifier m_layoutIdentifier : 12 { 0 };
->>>>>>> 31607e44e23f (Fallback to full-layout happens when more than 1 subtree layout is pending https://bugs.webkit.org/show_bug.cgi?id=275394)
 
     bool m_layoutSchedulingIsEnabled { true };
     bool m_firstLayout { true };

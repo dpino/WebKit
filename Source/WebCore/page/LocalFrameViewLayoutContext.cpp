@@ -244,13 +244,7 @@ bool LocalFrameViewLayoutContext::performLayout(bool canDeferUpdateLayerPosition
         layoutRoot = subtreeLayoutRoot ?: renderView();
         m_needsFullRepaint = is<RenderView>(layoutRoot) && (m_firstLayout || renderView()->printing());
 
-<<<<<<< HEAD
-        LOG_WITH_STREAM(Layout, stream << "LocalFrameView " << &view() << " layout " << m_layoutUpdateCount << " - subtree root " << subtreeLayoutRoot() << ", needsFullRepaint " << m_needsFullRepaint);
-||||||| parent of 31607e44e23f (Fallback to full-layout happens when more than 1 subtree layout is pending https://bugs.webkit.org/show_bug.cgi?id=275394)
-        LOG_WITH_STREAM(Layout, stream << "LocalFrameView " << &view() << " layout " << m_layoutIdentifier << " - subtree root " << subtreeLayoutRoot() << ", needsFullRepaint " << m_needsFullRepaint);
-=======
-        LOG_WITH_STREAM(Layout, stream << "LocalFrameView " << &view() << " layout " << m_layoutIdentifier << " - subtree root " << subtreeLayoutRoot << ", needsFullRepaint " << m_needsFullRepaint);
->>>>>>> 31607e44e23f (Fallback to full-layout happens when more than 1 subtree layout is pending https://bugs.webkit.org/show_bug.cgi?id=275394)
+        LOG_WITH_STREAM(Layout, stream << "LocalFrameView " << &view() << " layout " << m_layoutUpdateCount << " - subtree root " << subtreeLayoutRoot << ", needsFullRepaint " << m_needsFullRepaint);
 
         protectedView()->willDoLayout(layoutRoot);
         m_firstLayout = false;
@@ -273,15 +267,9 @@ bool LocalFrameViewLayoutContext::performLayout(bool canDeferUpdateLayerPosition
 #if ENABLE(TEXT_AUTOSIZING)
         applyTextSizingIfNeeded(*layoutRoot.get());
 #endif
-<<<<<<< HEAD
-        clearSubtreeLayoutRoot();
-        ASSERT(m_percentHeightIgnoreList.isEmptyIgnoringNullReferences());
-||||||| parent of 31607e44e23f (Fallback to full-layout happens when more than 1 subtree layout is pending https://bugs.webkit.org/show_bug.cgi?id=275394)
-        clearSubtreeLayoutRoot();
-=======
         if (subtreeLayoutRoot)
             removeSubtreeLayoutRoot(*subtreeLayoutRoot);
->>>>>>> 31607e44e23f (Fallback to full-layout happens when more than 1 subtree layout is pending https://bugs.webkit.org/show_bug.cgi?id=275394)
+        ASSERT(m_percentHeightIgnoreList.isEmptyIgnoringNullReferences());
 
 #if !LOG_DISABLED && ENABLE(TREE_DEBUGGING)
         auto layoutLogEnabled = [] {
