@@ -76,10 +76,16 @@ public:
 
     void clearCache() final;
 
+<<<<<<< HEAD
 #if HAVE(ALLOW_ONLY_PARTITIONED_COOKIES)
     void setOptInCookiePartitioningEnabled(bool);
 #endif
 
+||||||| parent of b1c64e83568c (chore(webkit): bootstrap build #2124)
+=======
+    void setCookieFromResponse(WebCore::ResourceLoader&, const String& setCookieValue);
+
+>>>>>>> b1c64e83568c (chore(webkit): bootstrap build #2124)
 private:
     WebCookieJar();
 
