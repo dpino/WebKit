@@ -244,13 +244,7 @@ bool LocalFrameViewLayoutContext::performLayout(bool canDeferUpdateLayerPosition
         layoutRoot = subtreeLayoutRoot ?: renderView();
         m_needsFullRepaint = is<RenderView>(layoutRoot) && (m_firstLayout || renderView()->printing());
 
-<<<<<<< HEAD
         LOG_WITH_STREAM(Layout, stream << "LocalFrameView " << &view() << " layout " << m_layoutUpdateCount << " - subtree root " << subtreeLayoutRoot() << ", needsFullRepaint " << m_needsFullRepaint);
-||||||| parent of 1af8a053a32b (Fallback to full-layout happens when more than 1 subtree layout is pending https://bugs.webkit.org/show_bug.cgi?id=275394)
-        LOG_WITH_STREAM(Layout, stream << "LocalFrameView " << &view() << " layout " << m_layoutIdentifier << " - subtree root " << subtreeLayoutRoot() << ", needsFullRepaint " << m_needsFullRepaint);
-=======
-        LOG_WITH_STREAM(Layout, stream << "LocalFrameView " << &view() << " layout " << m_layoutIdentifier << " - subtree root " << subtreeLayoutRoot << ", needsFullRepaint " << m_needsFullRepaint);
->>>>>>> 1af8a053a32b (Fallback to full-layout happens when more than 1 subtree layout is pending https://bugs.webkit.org/show_bug.cgi?id=275394)
 
         protectedView()->willDoLayout(layoutRoot);
         m_firstLayout = false;

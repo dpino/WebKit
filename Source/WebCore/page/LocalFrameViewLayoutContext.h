@@ -205,17 +205,9 @@ private:
     SingleThreadWeakRef<LocalFrameView> m_frameView;
     Timer m_layoutTimer;
     Timer m_postLayoutTaskTimer;
-<<<<<<< HEAD
-    SingleThreadWeakPtr<RenderElement> m_subtreeLayoutRoot;
-||||||| parent of 1af8a053a32b (Fallback to full-layout happens when more than 1 subtree layout is pending https://bugs.webkit.org/show_bug.cgi?id=275394)
-    SingleThreadWeakPtr<RenderElement> m_subtreeLayoutRoot;
-    // Note that arithmetic overflow is perfectly acceptable as long as we use this only for repaint optimization.
-    RenderElement::LayoutIdentifier m_layoutIdentifier : 12 { 0 };
-=======
     HashSet<RenderElement*> m_subtreeLayoutRoots;
     // Note that arithmetic overflow is perfectly acceptable as long as we use this only for repaint optimization.
     RenderElement::LayoutIdentifier m_layoutIdentifier : 12 { 0 };
->>>>>>> 1af8a053a32b (Fallback to full-layout happens when more than 1 subtree layout is pending https://bugs.webkit.org/show_bug.cgi?id=275394)
 
     bool m_layoutSchedulingIsEnabled { true };
     bool m_firstLayout { true };
