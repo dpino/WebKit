@@ -82,27 +82,7 @@ private:
 #if ENABLE(DAMAGE_TRACKING)
     WebCore::Damage::Propagation m_damagePropagation { WebCore::Damage::Propagation::None };
 #endif
-<<<<<<< HEAD
-||||||| parent of 976a083fd322 (Add damage visualizer starting on 'WEBKIT_SHOW_DAMAGE')
-
-    std::unique_ptr<WebCore::TextureMapperLayer> m_rootLayer;
-
-    Nicosia::PlatformLayer::LayerID m_rootLayerID { 0 };
-
-    HashMap<WebCore::TextureMapperLayer*, Ref<WebCore::CoordinatedBackingStore>> m_backingStores;
-
-    WebCore::TextureMapperFPSCounter m_fpsCounter;
-=======
-
-    std::unique_ptr<WebCore::TextureMapperLayer> m_rootLayer;
-
-    Nicosia::PlatformLayer::LayerID m_rootLayerID { 0 };
-
-    HashMap<WebCore::TextureMapperLayer*, Ref<WebCore::CoordinatedBackingStore>> m_backingStores;
-
-    WebCore::TextureMapperFPSCounter m_fpsCounter;
     WebCore::TextureMapperDamageVisualizer m_damageVisualizer;
->>>>>>> 976a083fd322 (Add damage visualizer starting on 'WEBKIT_SHOW_DAMAGE')
 };
 
 } // namespace WebKit
