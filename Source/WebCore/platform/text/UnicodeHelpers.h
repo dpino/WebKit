@@ -28,6 +28,7 @@
 #include <optional>
 
 #include <wtf/Forward.h>
+#include <optional>
 
 namespace WebCore {
 
