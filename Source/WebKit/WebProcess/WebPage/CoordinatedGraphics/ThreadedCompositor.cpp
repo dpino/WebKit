@@ -270,23 +270,7 @@ void ThreadedCompositor::renderLayerTree()
     // GL viewport is updated separately, if necessary. This establishes sequencing where
     // everything inside the will-render and did-render scope is done for a constant-sized scene,
     // and similarly all GL operations are done inside that specific scope.
-<<<<<<< HEAD
     bool needsGLViewportResize = m_surface->resize(viewportSize);
-||||||| parent of e668467e2029 (chore(webkit): bootstrap build #2125)
-
-    if (needsResize)
-        m_surface->clientResize(viewportSize);
-=======
-
-    if (needsResize)
-#if PLATFORM(WPE)
-        RunLoop::main().dispatch([this, protectedThis = Ref { *this }, viewportSize] {
-            m_surface->clientResize(viewportSize);
-        });
-#else
-        m_surface->clientResize(viewportSize);
-#endif
->>>>>>> e668467e2029 (chore(webkit): bootstrap build #2125)
 
     m_surface->willRenderFrame();
     RunLoop::main().dispatch([this, protectedThis = Ref { *this }] {
