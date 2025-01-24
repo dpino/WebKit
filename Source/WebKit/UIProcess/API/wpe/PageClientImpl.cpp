@@ -39,8 +39,7 @@
 #include "WebDateTimePickerWPE.h"
 #include "WebContextMenuProxy.h"
 #include "WebContextMenuProxyWPE.h"
-#include "WebDataListSuggestionsDropdown.h"
-#include "WebKitDataListSuggestionsDropdown.h"
+#include "WebDataListSuggestionsDropdownWPE.h"
 #include "WebKitPopupMenu.h"
 #include <WebCore/ActivityState.h>
 #include <WebCore/Cursor.h>
@@ -312,9 +311,9 @@ RefPtr<WebColorPicker> PageClientImpl::createColorPicker(WebPageProxy& page, con
     return WebColorPickerWPE::create(page, intialColor, rect);
 }
 
-RefPtr<WebDataListSuggestionsDropdown> PageClientImpl::createDataListSuggestionsDropdown(WebPageProxy&)
+RefPtr<WebKit::WebDataListSuggestionsDropdown> PageClientImpl::createDataListSuggestionsDropdown(WebKit::WebPageProxy& page)
 {
-    return nullptr;
+    return WebDataListSuggestionsDropdownWPE::create(page);
 }
 
 void PageClientImpl::enterAcceleratedCompositingMode(const LayerTreeContext& context)
@@ -580,13 +579,6 @@ void PageClientImpl::callAfterNextPresentationUpdate(CompletionHandler<void()>&&
 {
     m_view.callAfterNextPresentationUpdate(WTFMove(callback));
 }
-
-#if ENABLE(DATALIST_ELEMENT)
-RefPtr<WebKit::WebDataListSuggestionsDropdown> PageClientImpl::createDataListSuggestionsDropdown(WebKit::WebPageProxy& page)
-{
-    return WebKitDataListSuggestionsDropdown::create(page);
-}
-#endif
 
 #if ENABLE(DATE_AND_TIME_INPUT_TYPES)
 RefPtr<WebDateTimePicker> PageClientImpl::createDateTimePicker(WebPageProxy& page)
