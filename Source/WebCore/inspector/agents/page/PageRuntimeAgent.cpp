@@ -223,19 +223,7 @@ void PageRuntimeAgent::reportExecutionContextCreation()
     if (!pageAgent)
         return;
 
-<<<<<<< HEAD
     m_inspectedPage->forEachLocalFrame([&](LocalFrame& frame) {
-        if (!frame.script().canExecuteScripts(ReasonForCallingCanExecuteScripts::NotAboutToExecuteScript))
-            return;
-
-||||||| parent of 635e8146c45f (chore(webkit): bootstrap build #2128)
-    m_inspectedPage.forEachLocalFrame([&](LocalFrame& frame) {
-        if (!frame.script().canExecuteScripts(ReasonForCallingCanExecuteScripts::NotAboutToExecuteScript))
-            return;
-
-=======
-    m_inspectedPage.forEachLocalFrame([&](LocalFrame& frame) {
->>>>>>> 635e8146c45f (chore(webkit): bootstrap build #2128)
         auto frameId = pageAgent->frameId(&frame);
 
         // Always send the main world first.
