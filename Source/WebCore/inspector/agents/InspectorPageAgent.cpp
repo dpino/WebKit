@@ -73,6 +73,7 @@
 #include "SimpleRange.h"
 #include "ScriptController.h"
 #include "ScriptSourceCode.h"
+#include "ScrollingCoordinator.h"
 #include "SecurityOrigin.h"
 #include "Settings.h"
 #include "ShouldPartitionCookie.h"
