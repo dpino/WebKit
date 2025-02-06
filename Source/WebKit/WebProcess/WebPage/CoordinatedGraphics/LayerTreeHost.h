@@ -134,6 +134,7 @@ public:
 #if PLATFORM(WPE) && USE(GBM) && ENABLE(WPE_PLATFORM)
     void preferredBufferFormatsDidChange();
 #endif
+
 private:
     void updateRootLayer();
     WebCore::FloatRect visibleContentsRect() const;
@@ -184,6 +185,7 @@ private:
     bool m_layerTreeStateIsFrozen { false };
     bool m_isPurgingBackingStores { false };
     bool m_pendingResize { false };
+    bool m_pendingForceRepaint { false };
     bool m_isSuspended { false };
     bool m_isWaitingForRenderer { false };
     bool m_scheduledWhileWaitingForRenderer { false };
@@ -197,7 +199,7 @@ private:
     struct {
         CompletionHandler<void()> callback;
 #if HAVE(DISPLAY_LINK)
-        uint32_t compositionRequestID { 0 };
+        std::optional<uint32_t> compositionRequestID;
 #else
         bool needsFreshFlush { false };
 #endif
