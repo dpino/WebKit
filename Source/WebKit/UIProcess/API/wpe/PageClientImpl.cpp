@@ -39,14 +39,9 @@
 #include "WebDateTimePickerWPE.h"
 #include "WebContextMenuProxy.h"
 #include "WebContextMenuProxyWPE.h"
-<<<<<<< HEAD
 #include "WebDataListSuggestionsDropdown.h"
-#include "WebDateTimePicker.h"
-||||||| parent of 3768d4e2f770 (chore(webkit): bootstrap build #2133)
-#include "WebDataListSuggestionsDropdown.h"
-=======
 #include "WebDataListSuggestionsDropdownWPE.h"
->>>>>>> 3768d4e2f770 (chore(webkit): bootstrap build #2133)
+#include "WebDateTimePicker.h"
 #include "WebKitPopupMenu.h"
 #include <WebCore/ActivityState.h>
 #include <WebCore/Cursor.h>

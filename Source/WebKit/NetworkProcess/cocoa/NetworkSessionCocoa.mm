@@ -1145,11 +1145,7 @@ ALLOW_DEPRECATED_DECLARATIONS_END
         resourceResponse.disableLazyInitialization();
 
         resourceResponse.setDeprecatedNetworkLoadMetrics(WebCore::copyTimingData(taskMetrics, networkDataTask->networkLoadMetrics()));
-<<<<<<< HEAD
         resourceResponse.setProxyName(WTFMove(proxyName));
-||||||| parent of 3768d4e2f770 (chore(webkit): bootstrap build #2133)
-
-=======
 
         __block WebCore::HTTPHeaderMap requestHeaders;
         NSURLSessionTaskTransactionMetrics *m = dataTask._incompleteTaskMetrics.transactionMetrics.lastObject;
@@ -1158,7 +1154,6 @@ ALLOW_DEPRECATED_DECLARATIONS_END
         }];
         resourceResponse.m_httpRequestHeaderFields = WTFMove(requestHeaders);
 
->>>>>>> 3768d4e2f770 (chore(webkit): bootstrap build #2133)
         networkDataTask->didReceiveResponse(WTFMove(resourceResponse), negotiatedLegacyTLS, privateRelayed, [completionHandler = makeBlockPtr(completionHandler), taskIdentifier](WebCore::PolicyAction policyAction) {
 #if !LOG_DISABLED
             LOG(NetworkSession, "%llu didReceiveResponse completionHandler (%d)", taskIdentifier, policyAction);
