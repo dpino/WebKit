@@ -490,14 +490,9 @@ class WebExtensionController;
 class WebFramePolicyListenerProxy;
 class WebFrameProxy;
 class WebFullScreenManagerProxy;
-<<<<<<< HEAD
 #if ENABLE(FULLSCREEN_API)
 class WebFullScreenManagerProxyClient;
 #endif
-||||||| parent of 3ce460411e5d (chore(webkit): bootstrap build #2133)
-=======
-class WebFullScreenManagerProxyClient;
->>>>>>> 3ce460411e5d (chore(webkit): bootstrap build #2133)
 class WebInspectorUIProxy;
 class WebKeyboardEvent;
 class WebMouseEvent;
