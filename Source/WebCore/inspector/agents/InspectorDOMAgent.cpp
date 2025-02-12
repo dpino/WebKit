@@ -55,12 +55,8 @@
 #include "ContainerNode.h"
 #include "Cookie.h"
 #include "CookieJar.h"
-<<<<<<< HEAD
 #include "CustomElementRegistry.h"
-||||||| parent of 301493947916 (chore(webkit): bootstrap build #2134)
-=======
 #include "DirectoryFileListCreator.h"
->>>>>>> 301493947916 (chore(webkit): bootstrap build #2134)
 #include "DOMEditor.h"
 #include "DOMException.h"
 #include "DOMPatchSupport.h"
