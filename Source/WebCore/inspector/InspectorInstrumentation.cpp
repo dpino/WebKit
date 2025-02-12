@@ -1029,28 +1029,12 @@ void InspectorInstrumentation::consoleStopRecordingCanvasImpl(InstrumentingAgent
         canvasAgent->consoleStopRecordingCanvas(context);
 }
 
-<<<<<<< HEAD
-||||||| parent of e8ca2e281f49 (chore(webkit): bootstrap build #2134)
-void InspectorInstrumentation::didOpenDatabaseImpl(InstrumentingAgents& instrumentingAgents, Database& database)
-{
-    if (auto* databaseAgent = instrumentingAgents.enabledDatabaseAgent())
-        databaseAgent->didOpenDatabase(database);
-}
-
-=======
 void InspectorInstrumentation::bindingCalledImpl(InstrumentingAgents& instrumentingAgents, JSC::JSGlobalObject* globalObject, const String& name, const String& arg)
 {
     if (auto* pageRuntimeAgent = instrumentingAgents.enabledPageRuntimeAgent())
         pageRuntimeAgent->bindingCalled(globalObject, name, arg);
 }
 
-void InspectorInstrumentation::didOpenDatabaseImpl(InstrumentingAgents& instrumentingAgents, Database& database)
-{
-    if (auto* databaseAgent = instrumentingAgents.enabledDatabaseAgent())
-        databaseAgent->didOpenDatabase(database);
-}
-
->>>>>>> e8ca2e281f49 (chore(webkit): bootstrap build #2134)
 void InspectorInstrumentation::didDispatchDOMStorageEventImpl(InstrumentingAgents& instrumentingAgents, const String& key, const String& oldValue, const String& newValue, StorageType storageType, const SecurityOrigin& securityOrigin)
 {
     if (auto* domStorageAgent = instrumentingAgents.enabledDOMStorageAgent())

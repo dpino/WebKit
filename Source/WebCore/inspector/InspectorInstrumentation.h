@@ -1388,16 +1388,6 @@ inline void InspectorInstrumentation::interceptResponse(const LocalFrame& frame,
         interceptResponseImpl(*agents, response, identifier, WTFMove(handler));
 }
 
-<<<<<<< HEAD
-||||||| parent of e8ca2e281f49 (chore(webkit): bootstrap build #2134)
-inline void InspectorInstrumentation::didOpenDatabase(Database& database)
-{
-    FAST_RETURN_IF_NO_FRONTENDS(void());
-    if (auto* agents = instrumentingAgents(database.document()))
-        didOpenDatabaseImpl(*agents, database);
-}
-
-=======
 inline void InspectorInstrumentation::setStoppingLoadingDueToProcessSwap(Page* page, bool value)
 {
     ASSERT(InspectorInstrumentationPublic::hasFrontends());
@@ -1405,14 +1395,6 @@ inline void InspectorInstrumentation::setStoppingLoadingDueToProcessSwap(Page* p
         setStoppingLoadingDueToProcessSwapImpl(*agents, value);
 }
 
-inline void InspectorInstrumentation::didOpenDatabase(Database& database)
-{
-    FAST_RETURN_IF_NO_FRONTENDS(void());
-    if (auto* agents = instrumentingAgents(database.document()))
-        didOpenDatabaseImpl(*agents, database);
-}
-
->>>>>>> e8ca2e281f49 (chore(webkit): bootstrap build #2134)
 inline void InspectorInstrumentation::didDispatchDOMStorageEvent(Page& page, const String& key, const String& oldValue, const String& newValue, StorageType storageType, const SecurityOrigin& securityOrigin)
 {
     FAST_RETURN_IF_NO_FRONTENDS(void());

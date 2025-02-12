@@ -1402,16 +1402,10 @@ private:
     const UniqueRef<DragCaretController> m_dragCaretController;
 
 #if ENABLE(DRAG_SUPPORT)
-<<<<<<< HEAD
     const UniqueRef<DragController> m_dragController;
-||||||| parent of e8ca2e281f49 (chore(webkit): bootstrap build #2134)
-    UniqueRef<DragController> m_dragController;
-=======
-    UniqueRef<DragController> m_dragController;
 #if PLATFORM(MAC)
     String m_overrideDragPasteboardName;
 #endif
->>>>>>> e8ca2e281f49 (chore(webkit): bootstrap build #2134)
 #endif
     std::unique_ptr<FocusController> m_focusController;
 #if ENABLE(CONTEXT_MENUS)
