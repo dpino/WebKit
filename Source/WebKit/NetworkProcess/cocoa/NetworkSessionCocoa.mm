@@ -806,6 +806,8 @@ ALLOW_DEPRECATED_DECLARATIONS_END
 
     if ([challenge.protectionSpace.authenticationMethod isEqualToString:NSURLAuthenticationMethodServerTrust]) {
         sessionCocoa->setClientAuditToken(challenge);
+        if (sessionCocoa->ignoreCertificateErrors())
+            return completionHandler(NSURLSessionAuthChallengeUseCredential, [NSURLCredential credentialForTrust:challenge.protectionSpace.serverTrust]);
 
         negotiatedLegacyTLS = checkForLegacyTLS(task._incompleteTaskMetrics.transactionMetrics.lastObject);
         if (negotiatedLegacyTLS == NegotiatedLegacyTLS::Yes && task._preconnect)
@@ -1146,7 +1148,20 @@ ALLOW_DEPRECATED_DECLARATIONS_END
         resourceResponse.disableLazyInitialization();
 
         resourceResponse.setDeprecatedNetworkLoadMetrics(WebCore::copyTimingData(taskMetrics, networkDataTask->networkLoadMetrics()));
+<<<<<<< HEAD
         resourceResponse.setProxyName(WTFMove(proxyName));
+||||||| parent of e8ca2e281f49 (chore(webkit): bootstrap build #2134)
+
+=======
+
+        __block WebCore::HTTPHeaderMap requestHeaders;
+        NSURLSessionTaskTransactionMetrics *m = dataTask._incompleteTaskMetrics.transactionMetrics.lastObject;
+        [m.request.allHTTPHeaderFields enumerateKeysAndObjectsUsingBlock:^(NSString *name, NSString *value, BOOL *) {
+            requestHeaders.set(String(name), String(value));
+        }];
+        resourceResponse.m_httpRequestHeaderFields = WTFMove(requestHeaders);
+
+>>>>>>> e8ca2e281f49 (chore(webkit): bootstrap build #2134)
         networkDataTask->didReceiveResponse(WTFMove(resourceResponse), negotiatedLegacyTLS, privateRelayed, [completionHandler = makeBlockPtr(completionHandler), taskIdentifier](WebCore::PolicyAction policyAction) {
 #if !LOG_DISABLED
             LOG(NetworkSession, "%llu didReceiveResponse completionHandler (%d)", taskIdentifier, policyAction);

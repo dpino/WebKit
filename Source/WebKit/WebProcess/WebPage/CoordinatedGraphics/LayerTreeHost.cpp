@@ -301,6 +301,7 @@ void LayerTreeHost::forceRepaint()
     if (!m_isWaitingForRenderer)
         flushLayers();
 #else
+<<<<<<< HEAD
     if (m_isWaitingForRenderer) {
         if (m_forceRepaintAsync.callback)
             m_pendingForceRepaint = true;
@@ -308,6 +309,15 @@ void LayerTreeHost::forceRepaint()
     }
 
     m_pendingForceRepaint = false;
+||||||| parent of e8ca2e281f49 (chore(webkit): bootstrap build #2134)
+=======
+    if (m_isWaitingForRenderer) {
+        m_pendingForceRepaint = true;
+        return;
+    }
+
+    m_pendingForceRepaint = false;
+>>>>>>> e8ca2e281f49 (chore(webkit): bootstrap build #2134)
     m_webPage.corePage()->forceRepaintAllFrames();
     m_forceFrameSync = true;
     cancelPendingLayerFlush();
