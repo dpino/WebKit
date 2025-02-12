@@ -27,20 +27,10 @@
 #include "PointerEvent.h"
 
 #include "EventNames.h"
-<<<<<<< HEAD
 #include "MouseEventTypes.h"
-||||||| parent of e8ca2e281f49 (chore(webkit): bootstrap build #2134)
-=======
 #include "MouseEvent.h"
->>>>>>> e8ca2e281f49 (chore(webkit): bootstrap build #2134)
 #include "Node.h"
-<<<<<<< HEAD
-||||||| parent of e8ca2e281f49 (chore(webkit): bootstrap build #2134)
-#include "PlatformMouseEvent.h"
-=======
-#include "PlatformMouseEvent.h"
 #include "PlatformTouchEvent.h"
->>>>>>> e8ca2e281f49 (chore(webkit): bootstrap build #2134)
 #include "PointerEventTypeNames.h"
 #include <wtf/TZoneMallocInlines.h>
 #include <wtf/IsoMallocInlines.h>
