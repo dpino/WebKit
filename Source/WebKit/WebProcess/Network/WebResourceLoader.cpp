@@ -199,23 +199,10 @@ void WebResourceLoader::didReceiveResponse(ResourceResponse&& response, PrivateR
                 return;
             }
 
-<<<<<<< HEAD
-            coreLoader->didReceiveResponse(inspectorResponse, [this, protectedThis = Ref { *this }, interceptedRequestIdentifier, policyDecisionCompletionHandler = WTFMove(policyDecisionCompletionHandler), overrideData = WTFMove(overrideData)]() mutable {
+            m_coreLoader->didReceiveResponse(inspectorResponse, [this, protectedThis = WTFMove(protectedThis), interceptedRequestIdentifier, policyDecisionCompletionHandler = WTFMove(policyDecisionCompletionHandler), overrideData = WTFMove(overrideData)]() mutable {
                 RefPtr coreLoader = m_coreLoader;
-                if (policyDecisionCompletionHandler)
-                    policyDecisionCompletionHandler();
 
                 if (!m_coreLoader || !coreLoader->identifier()) {
-||||||| parent of 63b04c366a5f (chore(webkit): bootstrap build #2137)
-            m_coreLoader->didReceiveResponse(inspectorResponse, [this, protectedThis = WTFMove(protectedThis), interceptedRequestIdentifier, policyDecisionCompletionHandler = WTFMove(policyDecisionCompletionHandler), overrideData = WTFMove(overrideData)]() mutable {
-                if (policyDecisionCompletionHandler)
-                    policyDecisionCompletionHandler();
-
-                if (!m_coreLoader || !m_coreLoader->identifier()) {
-=======
-            m_coreLoader->didReceiveResponse(inspectorResponse, [this, protectedThis = WTFMove(protectedThis), interceptedRequestIdentifier, policyDecisionCompletionHandler = WTFMove(policyDecisionCompletionHandler), overrideData = WTFMove(overrideData)]() mutable {
-                if (!m_coreLoader || !m_coreLoader->identifier()) {
->>>>>>> 63b04c366a5f (chore(webkit): bootstrap build #2137)
                     m_interceptController.continueResponse(interceptedRequestIdentifier);
                     return;
                 }

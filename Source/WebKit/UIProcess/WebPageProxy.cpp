@@ -207,15 +207,11 @@
 #include <WebCore/DeprecatedGlobalSettings.h>
 #include <WebCore/DiagnosticLoggingClient.h>
 #include <WebCore/DiagnosticLoggingKeys.h>
-<<<<<<< HEAD
+#include <WebCore/DiagnosticLoggingResultType.h>
 #include <WebCore/DigitalCredentialRequest.h>
 #include <WebCore/DigitalCredentialRequestOptions.h>
 #include <WebCore/DigitalCredentialsRequestData.h>
 #include <WebCore/DigitalCredentialsResponseData.h>
-||||||| parent of 63b04c366a5f (chore(webkit): bootstrap build #2137)
-=======
-#include <WebCore/DiagnosticLoggingResultType.h>
->>>>>>> 63b04c366a5f (chore(webkit): bootstrap build #2137)
 #include <WebCore/DragController.h>
 #include <WebCore/DragData.h>
 #include <WebCore/ElementContext.h>
